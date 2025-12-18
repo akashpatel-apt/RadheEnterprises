@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radhe Enterprises </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
+        
+        .font-main { font-family: 'Poppins', sans-serif; }
+        .font-serif-title { font-family: 'Noto Serif', serif; }
+        
+        /* Smooth Fade Animation */
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Active Navigation State */
+        .nav-btn.active {
+            color: #f97316; /* Orange-500 */
+            position: relative;
+        }
+        .nav-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #f97316;
+            border-radius: 2px;
+        }
+
+        /* Card Hover Effects */
+        .hover-card-lift {
+            transition: all 0.3s ease;
+        }
+        .hover-card-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-main flex flex-col min-h-screen text-slate-800">
+
+    <!-- UNIVERSAL NAVIGATION -->
+    <nav class="w-full bg-slate-900 text-white shadow-xl py-4 px-4 md:px-10 flex justify-between items-center sticky top-0 z-50">
+        <div onclick="showPage('home')" class="cursor-pointer text-xl md:text-2xl font-bold tracking-wide flex items-center gap-3">
+            <div class="bg-gradient-to-br from-orange-500 to-red-600 text-white w-10 h-10 flex items-center justify-center rounded-lg font-extrabold shadow-lg">RE</div>
+            <div class="leading-tight">
+                <span class="block text-sm text-gray-400 font-medium tracking-widest"></span>
+                <span>RADHE <span class="text-orange-500">ENTERPRISES</span></span>
+            </div>
+        </div>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8">
+            <button id="nav-home" onclick="showPage('home')" class="nav-btn hover:text-gray-300 transition font-medium py-1">Home</button>
+            <button id="nav-driving" onclick="showPage('driving')" class="nav-btn hover:text-orange-400 transition font-medium flex items-center gap-2 py-1"><i class="fa-solid fa-car"></i> Driving School</button>
+            <button id="nav-tourism" onclick="showPage('tourism')" class="nav-btn hover:text-red-400 transition font-medium flex items-center gap-2 py-1"><i class="fa-solid fa-plane"></i> World Tourism</button>
+            <button id="nav-contact" onclick="showPage('contact')" class="nav-btn hover:text-blue-400 transition font-medium py-1">Contact</button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-2xl p-2 rounded hover:bg-slate-800 transition" onclick="toggleMobileMenu()"><i class="fa-solid fa-bars"></i></button>
+    </nav>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-800 text-white p-4 space-y-2 shadow-lg fixed w-full z-40 top-[72px] border-t border-slate-700">
+        <button onclick="showPage('home')" class="block w-full text-left py-3 px-4 rounded hover:bg-slate-700 transition">Home</button>
+        <button onclick="showPage('driving')" class="block w-full text-left py-3 px-4 rounded hover:bg-slate-700 transition text-orange-400"><i class="fa-solid fa-car mr-2"></i> Driving School</button>
+        <button onclick="showPage('tourism')" class="block w-full text-left py-3 px-4 rounded hover:bg-slate-700 transition text-red-400"><i class="fa-solid fa-plane mr-2"></i> World Tourism</button>
+        <button onclick="showPage('contact')" class="block w-full text-left py-3 px-4 rounded hover:bg-slate-700 transition">Contact Us</button>
+        <button onclick="showPage('privacy')" class="block w-full text-left py-3 px-4 rounded hover:bg-slate-700 transition text-gray-400">Privacy Policy</button>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- PAGE 1: HOME (Corporate Landing)          -->
+    <!-- ========================================= -->
+    <div id="home" class="page-section fade-in">
+        <!-- Corporate Hero -->
+        <header class="relative w-full h-[550px] flex items-center justify-center text-center px-4 bg-gray-900 overflow-hidden">
+            <!-- Background Image with Gradient Overlay -->
+            <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('Image/Office-img.jpg');"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
+            <div class="relative z-10 max-w-4xl text-white mt-10">
+                <span class="inline-block py-1 px-3 rounded-full bg-slate-800 border border-slate-600 text-xs font-bold tracking-widest mb-6 uppercase text-gray-300">Serving Bihar & World Since 2017</span>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Excellence in <span class="text-orange-500">Service</span>,<br> Trust in <span class="text-red-500">Every Journey</span></h1>
+                <p class="text-lg md:text-xl mb-10 text-gray-300 max-w-2xl mx-auto font-light">Radhe Enterprises offers professional driving education in Motihari and unparalleled spiritual travel opportunities across the globe. Trust us for excellence in both services.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showPage('driving')" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-bold shadow-lg transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-car"></i> Explore Driving School
+                    </button>
+                    <button onclick="showPage('tourism')" class="bg-red-700 hover:bg-red-800 text-white px-8 py-4 rounded-lg font-bold shadow-lg transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-plane"></i> Plan World Trip
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- About Brief -->
+        <section class="py-16 px-4 bg-white border-b border-gray-100">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">About Radhe Enterprises</h2>
+                <p class="text-gray-600 leading-relaxed text-lg">
+                     <strong>Radhe Enterprises</strong> rooted in Motihari, is a diversified services provider dedicated to local empowerment and cultural connection. We offer expert <strong>driving education</strong> to build confidence and facilitate serene <strong>spiritual travel</strong> to global destinations like the Himalayas, ensuring unmatched quality and safety in every experience.
+                </p>
+            </div>
+        </section>
+
+        <!-- Business Divisions -->
+        <section class="py-20 px-4 max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800">Our Core Divisions</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Card 1: Driving -->
+                <div onclick="showPage('driving')" class="cursor-pointer group bg-white rounded-2xl shadow-xl overflow-hidden hover-card-lift border border-gray-100 relative">
+                    <div class="absolute top-0 right-0 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-20">UNIT 01</div>
+                    <div class="h-72 bg- bg-cover bg-center group-hover:scale-105 transition duration-700" style="background-image: url('Image/Car-driving-img.jpg')";>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <h3 class="text-3xl font-bold group-hover:text-orange-400 transition">Car Driving School</h3>
+                            <p class="text-gray-300 text-sm mt-1">Car Training & License Services</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-greay-600 mb-6"><strong>Radhe Enterprises: Your 30-Day Path to Confident Driving.</strong></p>
+                        <p class="text-gray-600 mb-6">Get certified quickly with our expert, <strong>government-approved instructors.</strong> We offer flexible, inclusive training options for men and women, focusing purely on safety and skill mastery. Start your journey to becoming a safe driver today.</p>
+                        <span class="inline-flex items-center text-orange-600 font-bold uppercase tracking-wider text-sm group-hover:translate-x-2 transition">
+                            View Courses <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Tourism -->
+                <div onclick="showPage('tourism')" class="cursor-pointer group bg-white rounded-2xl shadow-xl overflow-hidden hover-card-lift border border-gray-100 relative">
+                    <div class="absolute top-0 right-0 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-20">UNIT 02</div>
+                    <div class="h-72 bg- bg-cover bg-center group-hover:scale-105 transition duration-700" style="background-image: url('Image/Tour-and-Travel img.jpg')";>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <h3 class="text-3xl font-bold group-hover:text-red-400 transition">Radhe Tour and Travel</h3>
+                            <p class="text-gray-300 text-sm mt-1">Spiritual & Adventure Tours</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-greay-600 mb-6"><strong>Radhe Enterprises: Unmatched Travel Experiences.</strong></p>
+                        <p class="text-gray-600 mb-6"><strong>From Motihari</strong> to the world, we offer professional tour and travel services. Specializing in spiritual destinations and exciting getaways, we guarantee convenience, safety, and customer satisfaction every step of the way. Trust us with your next adventure.</p>
+                        <span class="inline-flex items-center text-red-700 font-bold uppercase tracking-wider text-sm group-hover:translate-x-2 transition">
+                            View Packages <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- PAGE 2: DRIVING SCHOOL                    -->
+    <!-- ========================================= -->
+    <div id="driving" class="page-section hidden bg-white">
+        <!-- Sub-Header -->
+        <div class="bg-orange-50 py-3 px-6 border-b border-orange-100 flex justify-between items-center sticky top-[72px] z-30 shadow-sm">
+            <span class="text-orange-800 font-bold text-sm tracking-wide flex items-center gap-2"><i class="fa-solid fa-car"></i> MOTIHARI RADHE CAR DRIVING</span>
+            <button onclick="showPage('home')" class="text-gray-500 hover:text-orange-700 text-sm font-medium transition"><i class="fa-solid fa-arrow-left mr-1"></i> Main Menu</button>
+        </div>
+
+        <header class="relative w-full h-[400px] flex items-center justify-center px-4 bg- bg-cover bg-center" style="background-image: url('Image/Driving-school-img.png');">
+            <div class="absolute inset-0 bg-gray-900/80"></div>
+            <div class="relative z-10 text-center text-white">
+                <div class="mb-4 text-orange-400 text-lg font-semibold tracking-wider">LEARN SAFE • DRIVE SAFE</div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Master the Art of Driving</h2>
+                <p class="text-gray-300 max-w-xl mx-auto"><strong>Join Radhe Enterprises,</strong> an <Strong>industry-leading</Strong> driving institution. Start your driving journey with our <strong>ISO Certified Trainers</strong> and <strong>100% License Guarantee.</strong></p>
+            </div>
+        </header>
+        <!-- Process Section -->
+        <section class="py-12 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center text-center gap-8">
+                    <div class="flex-1">
+                        <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                        <h4 class="font-bold text-lg">Book a Slot</h4>
+                        <p class="text-sm text-gray-500">Call us or fill the form to choose your flexible timing.</p>
+                    </div>
+                    <div class="hidden md:block text-gray-300 text-2xl"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="flex-1">
+                        <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                        <h4 class="font-bold text-lg">30 Days Training</h4>
+                        <p class="text-sm text-gray-500">Learn practical driving on AC cars + Theory classes.</p>
+                    </div>
+                    <div class="hidden md:block text-gray-300 text-2xl"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="flex-1">
+                        <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                        <h4 class="font-bold text-lg">Get Licensed</h4>
+                        <p class="text-sm text-gray-500">We assist you with paperwork to get your DL hassle-free.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 max-w-6xl mx-auto bg-gray-50 rounded-3xl mb-10">
+            <!-- SECTION 1: COURSES (2 Items - Perfect for 2 Column Grid) -->
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-12 border-t border-gray-200 pt-12">Our Course Packages & Additional Services</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+                <!-- Pricing 1 -->
+                <div class="bg-white rounded-xl p-8 hover-card-lift border border-gray-100 shadow-sm flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-800">Pro Course</h3>
+                    <div class="text-3xl font-bold text-orange-600 mt-2">₹7,500</div>
+                    <p class="text-gray-500 text-sm mt-1 mb-6">For pro level</p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> 30 Days Duration</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Highway Driving</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Theory + Practical</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Traffic Rules Class And All</li>
+                    </ul>
+                    <button class="w-full bg-slate-800 text-white py-3 rounded-lg font-bold hover:bg-orange-600 transition" onclick="showPage('contact')">Book Now</button>
+                </div>
+                <!-- Pricing 2 (Featured) -->
+                <div class="bg-white rounded-xl p-8 hover-card-lift border-2 border-orange-500 shadow-xl relative transform md:-translate-y-4 flex flex-col"> 
+                    <div class="absolute top-0 center bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-b-lg left-1/2 transform -translate-x-1/2">MOST POPULAR</div>
+                    <h3 class="text-xl font-bold text-gray-800">Beginner Course</h3>
+                    <div class="text-3xl font-bold text-orange-600 mt-2">₹5,000</div>
+                    <p class="text-gray-500 text-sm mt-1 mb-6">For absolute beginners</p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> 15 Days Duration</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Theory + Practical</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Traffic Rules Class</li>
+                    </ul>
+                    <button class="w-full bg-orange-600 text-white py-3 rounded-lg font-bold hover:bg-orange-700 transition" onclick="showPage('contact')">Book Now</button> 
+                </div>
+                <!-- Pricing 3 (Featured) -->
+                <div class="bg-white rounded-xl p-8 hover-card-lift border border-gray-100 shadow-sm flex flex-col"> 
+                    <h3 class="text-xl font-bold text-gray-800 mt-2">Refresher Course</h3>
+                    <div class="text-3xl font-bold text-orange-600 mt-2">₹3,000</div>
+                    <p class="text-gray-500 text-sm mt-1 mb-6">Confidence booster</p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> 7 Days Duration</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Highway Driving</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Reverse Parking</li>
+                    </ul>
+                    <button class="w-full bg-slate-800 text-white py-3 rounded-lg font-bold hover:bg-orange-600 transition" onclick="showPage('contact')">Book Now</button> 
+                </div>
+            
+                <!-- License Service 4 -->
+                <div class="bg-white rounded-xl p-8 hover-card-lift border border-gray-100 shadow-sm flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-800">License Service</h3>
+                    <div class="text-3xl font-bold text-orange-600 mt-2">Consult</div>
+                    <p class="text-gray-500 text-sm mt-1 mb-6">Paperwork assistance</p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Learner License</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Permanent DL</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> DL Renewal</li>
+                    </ul>
+                    <button class="w-full bg-slate-800 text-white py-3 rounded-lg font-bold hover:bg-orange-600 transition" onclick="showPage('contact')">Inquire Now</button>
+                </div>
+                <!-- Car Service 5: CAR RENTAL -->
+                <div class="bg-white rounded-xl p-8 hover-card-lift border border-gray-100 shadow-sm flex flex-col w-full max-w-sm">
+                    <h3 class="text-xl font-bold text-gray-800">Car on Rent</h3>
+                    <div class="text-3xl font-bold text-orange-600 mt-2">Best Rates<span class="text-sm text-gray-400 font-normal">/Day</span></div>
+                    <p class="text-gray-500 text-sm mt-1 mb-6">For weddings & travel</p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Well Maintained Fleet</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Scorpio / Swift / Alto</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Self or Chauffeur Driven</li>
+                    </ul>
+                    <button class="w-full bg-slate-800 text-white py-3 rounded-lg font-bold hover:bg-orange-600 transition" onclick="showPage('contact')">Book Car</button>
+                </div>
+                <!-- DRIVER SERVICE 6:-->
+                <div class="bg-white rounded-xl p-8 hover-card-lift border border-gray-100 shadow-sm flex flex-col w-full max-w-sm">
+                    <h3 class="text-xl font-bold text-gray-800">Hire a Driver</h3>
+                    <div class="text-3xl font-bold text-orange-600 mt-2">₹700<span class="text-sm text-gray-400 font-normal">/Day</span></div>
+                    <p class="text-gray-500 text-sm mt-1 mb-6">Expert drivers for you</p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Verified Professionals</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Local & Outstation</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500"></i> Hourly Rates Available</li>
+                    </ul>
+                    <button class="w-full bg-slate-800 text-white py-3 rounded-lg font-bold hover:bg-orange-600 transition" onclick="showPage('contact')">Hire Driver</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- PAGE 3: TOURISM                           -->
+    <!-- ========================================= -->
+    <div id="tourism" class="page-section hidden bg-amber-50 font-serif-title">
+        <!-- Sub-Header -->
+        <div class="bg-red-50 py-3 px-6 border-b border-red-100 flex justify-between items-center font-main sticky top-[72px] z-30 shadow-sm">
+            <span class="text-red-800 font-bold text-sm tracking-wide flex items-center gap-2"><i class="fa-solid fa-plane"></i>RADHE WORLD YATRA</span>
+            <button onclick="showPage('home')" class="text-gray-500 hover:text-red-700 text-sm font-medium transition"><i class="fa-solid fa-arrow-left mr-1"></i> Main Menu</button>
+        </div>
+
+        <header class="relative w-full h-[450px] flex items-center justify-center px-4 bg-cover bg-center" style="background-image: url('Image/Discover-world-img.jpeg');">
+            <div class="absolute inset-0 bg-blue-900/40 mix-blend-multiply"></div>
+            <div class="relative z-10 text-center text-white">
+                <div class="inline-block border-b-2 border-yellow-400 pb-2 mb-4 font-main text-sm tracking-[0.2em] uppercase text-yellow-300">Spiritual Journeys</div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">Discover World</h2>
+                <p class="text-xl md:text-2xl font-light italic text-gray-100">The World is a Diverse and Astonishing place, full of Experiences and Discoveries .</p>
+            </div>
+        </header>
+
+        <!-- Icon Strip -->
+        <div class="bg-red-800 text-white py-6 font-main">
+            <div class="max-w-6xl mx-auto flex flex-wrap justify-center gap-8 md:gap-16 px-4 text-center">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-utensils text-yellow-400 text-xl"></i>
+                    <span class="font-medium">Indian Veg & Non-Veg Food</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-language text-yellow-400 text-xl"></i>
+                    <span class="font-medium">Hindi & English Guides</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-hotel text-yellow-400 text-xl"></i>
+                    <span class="font-medium">Premium & Low Hotels</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-shield-halved text-yellow-400 text-xl"></i>
+                    <span class="font-medium">Safe Travel</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="py-16 px-4 max-w-6xl mx-auto font-main">
+            <h3 class="text-3xl font-bold text-center text-gray-800 font-serif-title mb-12">Popular Tour Packages</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-amber-100 hover-card-lift group">
+                    <div class="h-56 overflow-hidden relative">
+                         <img src="Image/Bihar-Tour-img.jpg" class="w-full h-full object-cover transition transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 font-serif-title">Bihar Tour</h3>
+                        <p class="text-gray-600 text-sm mt-3 mb-4 leading-relaxed">Bihar's most popular destinations are Bodh Gaya (Mahabodhi Temple), Rajgir (Nature Safari and Peace Pagupa), Nalanda (ancient university ruins), and the capital city Patna (Golghar).</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <button class="bg-red-50 text-red-700 px-4 py-2 rounded font-semibold text-sm hover:bg-red-700 hover:text-white transition" onclick="showPage('contact')">Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-amber-100 hover-card-lift group">
+                    <div class="h-56 overflow-hidden relative">
+                         <img src="Image/India-Tour-img.jpeg" class="w-full h-full object-cover transition transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 font-serif-title">India Tour</h3>
+                        <p class="text-gray-600 text-sm mt-3 mb-4 leading-relaxed">An India tour is an incredible journey where every step unveils a vibrant blend of Culture, History, and Diverse Landscapes.</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <button class="bg-red-50 text-red-700 px-4 py-2 rounded font-semibold text-sm hover:bg-red-700 hover:text-white transition" onclick="showPage('contact')">Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-amber-100 hover-card-lift group">
+                    <div class="h-56 overflow-hidden relative">
+                         <img src="Image/World-Tour-img.jpg" class="w-full h-full object-cover transition transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 font-serif-title">World Tour</h3>
+                        <p class="text-gray-600 text-sm mt-3 mb-4 leading-relaxed">A world tour is an incredible journey that connects you with diverse cultures, landscapes, and experiences.</p>
+
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <button class="bg-red-50 text-red-700 px-4 py-2 rounded font-semibold text-sm hover:bg-red-700 hover:text-white transition" onclick="showPage('contact')">Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button onclick="showPage('contact')" class="bg-red-700 hover:bg-red-800 text-white px-10 py-3 rounded-full font-bold shadow-lg transform hover:scale-105 transition">Get a Custom Itinerary</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- PAGE 4: CONTACT (Shared)                  -->
+    <!-- ========================================= -->
+    <div id="contact" class="page-section hidden bg-white flex-grow">
+        <div class="py-16 px-4 max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-10 text-slate-800">Get in Touch</h2>
+            
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-gray-200">
+                <!-- Contact Info Sidebar -->
+                <div class="bg-slate-900 text-white p-10 md:w-2/5 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -mr-16 -mt-16"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-red-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -ml-16 -mb-16"></div>
+                    
+                    <div class="relative z-10">
+                        <h4 class="text-xl font-bold mb-8 tracking-wide">CONTACT INFORMATION</h4>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-slate-800 p-3 rounded-lg text-orange-500"><i class="fa-solid fa-location-dot text-xl"></i></div>
+                                <div>
+                                    <h5 class="font-bold text-sm text-gray-300">Head Office</h5>
+                                    <p class="text-sm text-gray-400 mt-1">Raja Bazar, Motihari,<br>(Near Dr. Vinita Verma Clinic), Bihar - 845401</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="bg-slate-800 p-3 rounded-lg text-orange-500"><i class="fa-solid fa-phone text-xl"></i></div>
+                                <div>
+                                    <h5 class="font-bold text-sm text-gray-300">Call Us</h5>
+                                    <p class="text-sm text-gray-400 mt-1">+91 9599433235 (Driving)<br>+91 9599433235 (Tourism)</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="bg-slate-800 p-3 rounded-lg text-orange-500"><i class="fa-solid fa-envelope text-xl"></i></div>
+                                <div>
+                                    <h5 class="font-bold text-sm text-gray-300">Email</h5>
+                                    <p class="text-sm text-gray-400 mt-1">radheenterprises9988@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative z-10 mt-10">
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4">Follow Us</p>
+                        <div class="flex gap-4">
+                            <a href="https://www.facebook.com/share/1Bbsv1TMUv/" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-500 hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/radhe_enterprises05?igsh=MTB4MDNvMjFrMDh1Zw==" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://youtube.com/@wanderer_wth_jarvis?si=JqPev-uGHv6eucZp" class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="https://x.com/RadheEnterp05" class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-black hover:text-white transition">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="p-10 md:w-3/5 bg-gray-50">
+                    <!-- UPDATED FORM: Added 'action' and 'method'. Replace the URL below with your Formspree Endpoint -->
+                    <!-- Step 1: Go to https://formspree.io/ -->
+                    <!-- Step 2: Create a free account and a new form -->
+                    <!-- Step 3: Copy the 'Endpoint' URL and paste it inside action="..." below -->
+                    <form action="https://formspree.io/f/xvgevoev" method="POST" class="space-y-6">
+                        <!-- Custom Subject Line for Email -->
+                        <input type="hidden" name="_subject" value="New Inquiry - Radhe Enterprises">
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Your Name</label>
+                                <!-- Added name="name" -->
+                                <input type="text" name="name" class="w-full p-3 bg-white border border-gray-200 rounded focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition" placeholder="Write Full Name..." required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Phone Number</label>
+                                <!-- Added name="phone" -->
+                                <input type="tel" name="phone" class="w-full p-3 bg-white border border-gray-200 rounded focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition" placeholder="+91..." required>
+                            </div>
+                        </div>
+
+                        <!-- NEW EMAIL FIELD ADDED HERE -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Email Address</label>
+                            <!-- Added name="email" -->
+                            <input type="email" name="email" class="w-full p-3 bg-white border border-gray-200 rounded focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition" placeholder="you@example.com" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Department</label>
+                            <!-- Added name="department" -->
+                            <select name="department" class="w-full p-3 bg-white border border-gray-200 rounded text-gray-600 focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition">
+                                <option>Select Department...</option>
+                                <option>Car on Rent</option>
+                                <option>Hire a Driver</option>
+                                <option>License</option>
+                                <option>Car Driving School</option>
+                                <option>Bihar Tour</option>
+                                <option>India Tour</option>
+                                <option>World Tour</option>
+                                <option>General Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Message</label>
+                            <!-- Added name="message" -->
+                            <textarea name="message" rows="4" class="w-full p-3 bg-white border border-gray-200 rounded focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition" placeholder="How can we help you?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-slate-900 text-white font-bold py-4 rounded hover:bg-slate-800 transition transform hover:-translate-y-1 shadow-lg">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- PRIVACY POLICY SECTION                    -->
+    <!-- ========================================= -->
+    <div id="privacy" class="page-section hidden bg-white fade-in">
+        <div class="bg-slate-900 text-white py-12 px-6 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold">Privacy Policy</h1>
+            <p class="text-gray-400 mt-2">Transparency is our policy.</p>
+        </div>
+        <div class="py-16 px-6 max-w-4xl mx-auto text-gray-700 leading-relaxed space-y-8">
+            <p class="italic text-sm text-gray-500"><strong>Last Updated:</strong> December 11, 2025</p>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">1. Introduction</h3>
+                <p>Welcome to <strong>Radhe Enterprises</strong>. We value the trust you place in us. This Privacy Policy describes how we collect, use, and share information when you use our services, which include:</p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>Motihari Radhe Car Driving</strong> (Training Services)</li>
+                    <li><strong>Radhe World Yatra</strong> (Tour & Travel Services)</li>
+                    <li><strong>Car Rental Services</strong> (Self-drive & Chauffeur-driven)</li>
+                    <li><strong>Driver Hire Services</strong></li>
+                    <li><strong>License Consultancy Services</strong></li>
+                </ul>
+                <p class="mt-2">By visiting our website or using our services, you agree to the collection and use of information in accordance with this policy.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">2. Information We Collect</h3>
+                <p>We collect different types of information depending on the service you choose:</p>
+                <h4 class="font-bold mt-4 text-slate-900">A. Personal Information</h4>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>Contact Details:</strong> Name, Phone Number, Email Address, and Residential Address.</li>
+                    <li><strong>Identity Proof:</strong> Aadhar Card, Voter ID, PAN Card, or Passport (required for Car Rental, World Tours, and License Services).</li>
+                    <li><strong>Driving Credentials:</strong> Existing Learning License or Permanent Driving License details (for Rental and Driver jobs).</li>
+                </ul>
+                <h4 class="font-bold mt-4 text-slate-900">B. Payment Information</h4>
+                <p>We may collect transaction details when you pay for a course or package. Note: We do not store your Credit/Debit card numbers or Net Banking passwords. All payments are processed through secure third-party gateways.</p>
+                <h4 class="font-bold mt-4 text-slate-900">C. Technical Data</h4>
+                <p>When you visit our website, we may automatically collect your IP address, browser type, and operating system for analytics purposes to improve our website performance.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">3. How We Use Your Information</h3>
+                <p>We use your data strictly for legitimate business purposes:</p>
+                <ol class="list-decimal pl-5 mt-2 space-y-2">
+                    <li><strong>For Driving School:</strong> To schedule training sessions, issue completion certificates, and communicate class timings.</li>
+                    <li><strong>For License Services:</strong> To fill out government forms (Sarathi/Parivahan) on your behalf and schedule RTO appointments. <strong>Note:</strong> We act as a facilitator; your data is submitted directly to the Government Transport Department.</li>
+                    <li><strong>For World Tourism:</strong> To book hotels, arrange transport permits for crossing borders, and secure necessary travel visas/permits.</li>
+                    <li><strong>For Car Rental:</strong> To verify your identity and driving eligibility before handing over the vehicle, and for insurance purposes in case of accidents.</li>
+                    <li><strong>For Driver Service:</strong> To verify the background of drivers and ensure the safety of our clients.</li>
+                </ol>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">4. Information Sharing and Disclosure</h3>
+                <p>We do not sell your personal data to advertisers. However, we may share your information in the following specific scenarios:</p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>Government Authorities:</strong> We are required to share your details with the Regional Transport Office (RTO) for license processing or with Border Control authorities for international tours.</li>
+                    <li><strong>Service Partners:</strong> We may share basic details (Name, Phone) with hotels or third-party vehicle providers to fulfill your booking.</li>
+                    <li><strong>Legal Requirements:</strong> If required by law, court order, or police investigation (e.g., in case of a traffic violation or accident involving a rented car).</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">5. Data Security</h3>
+                <p>We implement appropriate security measures to protect your personal information from unauthorized access, alteration, or disclosure.</p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li>Physical copies of documents (Xerox of ID proofs) are kept in secure files and destroyed when no longer needed.</li>
+                    <li>Digital data is stored on secure servers with restricted access.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">6. Your Rights</h3>
+                <p>You have the right to:</p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li>Request a copy of the information we hold about you.</li>
+                    <li>Request correction of any incorrect data (e.g., wrong spelling in the License application).</li>
+                    <li>Request deletion of your data after your service is completed (subject to legal record-keeping requirements).</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">7. Third-Party Links</h3>
+                <p>Our website may contain links to other websites (e.g., Parivahan Sewa, Ministry of Tourism). We are not responsible for the privacy practices of those external sites.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">8. Updates to This Policy</h3>
+                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">9. Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                <ul class="list-none mt-2 space-y-1 bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <li><strong>Business Name:</strong> Radhe Enterprises</li>
+                    <li><strong>Address:</strong> Raja Bazar, Motihari, (Near Dr. Vinita Verma Clinic), Bihar - 845401</li>
+                    <li><strong>Email:</strong> radheenterprises9988@gmail.com</li>
+                    <li><strong>Phone:</strong> +91 9599433235</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- TERMS OF SERVICE SECTION                  -->
+    <!-- ========================================= -->
+    <div id="terms" class="page-section hidden bg-white fade-in">
+        <div class="bg-slate-900 text-white py-12 px-6 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold">Terms of Service</h1>
+            <p class="text-gray-400 mt-2">Guidelines for using our services.</p>
+        </div>
+        <div class="py-16 px-6 max-w-4xl mx-auto text-gray-700 leading-relaxed space-y-8">
+            <p class="italic text-sm text-gray-500"><strong>Last Updated:</strong> December 11, 2025</p>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">1. Acceptance of Terms</h3>
+                <p>By accessing and using the services provided by <strong>Radhe Enterprises</strong>, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">2. Services Offered</h3>
+                <p>Radhe Enterprises offers a range of services including driving instruction, tour packages, vehicle rentals, driver hiring, and license consultancy. Each service is subject to specific terms and conditions outlined below.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">3. Driving School Terms</h3>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>Eligibility:</strong> Students must hold a valid Learner's License to enroll in practical driving lessons.</li>
+                    <li><strong>Scheduling:</strong> Lesson slots are subject to availability. Cancellations must be made at least 24 hours in advance.</li>
+                    <li><strong>Safety:</strong> Students must follow all instructions given by the trainer. Radhe Enterprises is not liable for accidents caused by student negligence or disregard for traffic rules.</li>
+                    <li><strong>Certification:</strong> Completion certificates are issued only after successfully passing our internal assessment.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">4. Tour & Travel Terms</h3>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>Booking:</strong> A deposit is required to confirm bookings for tour packages.</li>
+                    <li><strong>Itinerary Changes:</strong> Radhe Enterprises reserves the right to alter itineraries due to unforeseen circumstances like weather, political unrest, or road conditions.</li>
+                    <li><strong>Documents:</strong> Travelers are responsible for possessing valid ID proofs (and Passports/Visas for international travel).</li>
+                    <li><strong>Liability:</strong> We act as an agent for hotels and transport providers and are not liable for their service deficiencies, though we will assist in resolving issues.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">5. Car Rental Terms</h3>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>License:</strong> Renters must possess a valid, permanent driving license.</li>
+                    <li><strong>Usage:</strong> Vehicles must not be used for illegal activities or racing.</li>
+                    <li><strong>Damage:</strong> Renters are responsible for any damage to the vehicle during the rental period not covered by insurance. A security deposit may be required.</li>
+                    <li><strong>Fuel:</strong> Fuel costs are generally the responsibility of the renter unless specified otherwise.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">6. License Consultancy Terms</h3>
+                <p>Radhe Enterprises acts solely as a facilitator to assist with the application process. We do not guarantee the issuance of a license, as this is the sole discretion of the Regional Transport Office (RTO) based on your performance in tests and document verification.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">7. User Conduct</h3>
+                <p>You agree to use our website and services for lawful purposes only. You must not use our services to harass, abuse, or harm others, or to transmit any unlawful material.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">8. Limitation of Liability</h3>
+                <p>Radhe Enterprises shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the services.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">9. Governing Law</h3>
+                <p>These Terms shall be governed and construed in accordance with the laws of India, without regard to its conflict of law provisions. Any disputes will be subject to the jurisdiction of the courts in Motihari, Bihar.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">10. Contact Us</h3>
+                <p>For any questions regarding these Terms of Service, please contact us at:</p>
+                <ul class="list-none mt-2 space-y-1 bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <li><strong>Business Name:</strong> Radhe Enterprises</li>
+                    <li><strong>Email:</strong> radheenterprises9988@gmail.com</li>
+                    <li><strong>Phone:</strong> +91 9599433235</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- REFUND POLICY SECTION                     -->
+    <!-- ========================================= -->
+    <div id="refund" class="page-section hidden bg-white fade-in">
+        <div class="bg-slate-900 text-white py-12 px-6 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold">Refund Policy</h1>
+            <p class="text-gray-400 mt-2">Clear and fair refund guidelines.</p>
+        </div>
+        <div class="py-16 px-6 max-w-4xl mx-auto text-gray-700 leading-relaxed space-y-8">
+            <p class="italic text-sm text-gray-500"><strong>Last Updated:</strong> December 11, 2025</p>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">1. Overview</h3>
+                <p>At <strong>Radhe Enterprises</strong>, we strive to ensure our customers are satisfied with our services. However, we understand that circumstances may change. This Refund Policy outlines the conditions under which refunds may be granted for our various services.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">2. Driving School Refunds</h3>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>Full Refund:</strong> If a student cancels their enrollment at least 48 hours before the first scheduled lesson, a full refund (minus a small administrative fee) will be issued.</li>
+                    <li><strong>Partial Refund:</strong> If a student discontinues training after lessons have begun, a refund will be calculated on a pro-rata basis for the remaining unused lessons, minus a cancellation fee.</li>
+                    <li><strong>No Refund:</strong> No refunds will be issued for lessons missed without prior notice (24 hours) or after the training course validity period has expired.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">3. Tour & Travel Refunds</h3>
+                <p>Refunds for tour packages are subject to the cancellation policies of our partner hotels and transport providers:</p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>Cancellation 30+ days before departure:</strong> 90% refund of the booking amount.</li>
+                    <li><strong>Cancellation 15-29 days before departure:</strong> 50% refund of the booking amount.</li>
+                    <li><strong>Cancellation 7-14 days before departure:</strong> 25% refund of the booking amount.</li>
+                    <li><strong>Cancellation less than 7 days before departure:</strong> No refund.</li>
+                    <li><strong>Note:</strong> Visa fees and other non-refundable administrative costs are excluded from refunds.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">4. Car Rental Refunds</h3>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>Advance Booking:</strong> Cancellations made 24 hours prior to the pickup time are eligible for a full refund of the booking advance.</li>
+                    <li><strong>Late Cancellation:</strong> Cancellations made within 24 hours of pickup may incur a cancellation charge equivalent to one day's rental.</li>
+                    <li><strong>Early Return:</strong> If a vehicle is returned earlier than the scheduled date, refunds for the unused days will be at the discretion of management and subject to minimum rental period terms.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">5. License Consultancy Refunds</h3>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>Service Not Initiated:</strong> Full refund if you cancel before we have started processing your application or booked an appointment.</li>
+                    <li><strong>Application Rejected:</strong> If an application is rejected due to an error on our part, we will re-apply at no extra cost or provide a refund of our service fee.</li>
+                    <li><strong>Government Fees:</strong> Government fees paid to the RTO are non-refundable once the payment is processed on the official portal.</li>
+                    <li><strong>Client Error:</strong> No refund if rejection is due to incorrect documents provided by the client or failure to attend the RTO appointment.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">6. Refund Process</h3>
+                <p>To request a refund, please contact us via email or phone with your booking details and reason for cancellation. Approved refunds will be processed within 7-10 business days and credited back to the original method of payment.</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800">7. Contact for Refunds</h3>
+                <p>For refund requests or queries:</p>
+                <ul class="list-none mt-2 space-y-1 bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <li><strong>Business Name:</strong> Radhe Enterprises</li>
+                    <li><strong>Email:</strong> radheenterprises9988@gmail.com</li>
+                    <li><strong>Phone:</strong> +91 9599433235</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- GLOBAL FOOTER (Expanded) -->
+    <footer class="bg-black text-gray-400 py-12 border-t border-gray-900 mt-auto text-sm">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+                    <span class="bg-gradient-to-br from-orange-500 to-red-600 w-8 h-8 flex items-center justify-center rounded text-xs">RE</span>
+                    RADHE ENTERPRISES
+                </div>
+                <p class="mb-4 text-gray-500 max-w-sm"><strong>Radhe Enterprises,</strong> we are deeply committed to providing top-tier solutions designed to empower our clients. In the realm of automotive education, our focus is on creating safe, responsible, and skilled drivers through expert-led training programs. In travel management, we strive to eliminate the complexities of planning, offering personalized itineraries that ensure hassle-free and memorable trips worldwide. Our reputation stands firmly on a foundation of client satisfaction. We operate with the understanding that your confidence in our services is not just appreciation—it is our most critical business capital.</p>
+
+                <!-- NEW SOCIAL MEDIA SECTION ADDED -->
+                <div class="mt-6">
+                    <span class="block text-xs font-bold text-gray-600 uppercase mb-3 tracking-wider">Follow Us</span>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/share/1Bbsv1TMUv/" class="w-8 h-8 rounded bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/radhe_enterprises05?igsh=MTB4MDNvMjFrMDh1Zw==" class="w-8 h-8 rounded bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/RadheEnterp05" class="w-8 h-8 rounded bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-black hover:text-white transition">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                        </a>
+                        <a href="https://youtube.com/@wanderer_wth_jarvis?si=JqPev-uGHv6eucZp" class="w-8 h-8 rounded bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><button onclick="showPage('home')" class="hover:text-white transition">Home</button></li>
+                    <li><button onclick="showPage('driving')" class="hover:text-orange-500 transition">Driving School</button></li>
+                    <li><button onclick="showPage('tourism')" class="hover:text-red-500 transition">World Tourism</button></li>
+                    <li><button onclick="showPage('contact')" class="hover:text-white transition">Contact Support</button></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Legal</h4>
+                <ul class="space-y-2">
+                    <!-- Updated Legal Links to use showPage() -->
+                    <li><button onclick="showPage('privacy')" class="hover:text-white transition">Privacy Policy</button></li>
+                    <li><button onclick="showPage('terms')" class="hover:text-white transition">Terms of Service</button></li>
+                    <li><button onclick="showPage('refund')" class="hover:text-white transition">Refund Policy</button></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 pt-8 border-t border-gray-900 text-center text-xs text-gray-600">
+            &copy; 2025 Radhe Enterprises. All Rights Reserved. Designed for Excellence.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize page based on hash or default to home
+        window.addEventListener('load', () => {
+            showPage('home');
+        });
+
+        function showPage(pageId) {
+            const selectedPage = document.getElementById(pageId);
+            
+            // 1. BLINKING FIX: Don't re-render if already active
+            if (!selectedPage.classList.contains('hidden')) {
+                return; 
+            }
+
+            // 2. Hide all pages & remove animation
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.add('hidden');
+                page.classList.remove('fade-in');
+            });
+
+            // 3. Update Active Nav State
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeBtn = document.getElementById('nav-' + pageId);
+            if(activeBtn) activeBtn.classList.add('active');
+
+            // 4. Show new page + Trigger Animation
+            selectedPage.classList.remove('hidden');
+            
+            // Minimal delay to ensure browser registers the class change for animation
+            setTimeout(() => {
+                selectedPage.classList.add('fade-in');
+            }, 10);
+
+            // 5. Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // 6. Close mobile menu
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
